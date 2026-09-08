@@ -8,7 +8,7 @@ i wysyła powiadomienie Telegram (+opcjonalnie e-mail), gdy pojawi się przycisk
   (`#availability`) oraz obecność przycisku `#buy-now-button` / `#add-to-cart-button`.
   **Zwykłe zapytania HTTP (`requests`) nie działają** — Amazon od razu pokazuje ekran
   "kliknij, aby kontynuować zakupy" zamiast strony produktu; prawdziwa przeglądarka to omija.
-- GitHub Actions (`.github/workflows/check-stock.yml`) uruchamia skrypt co 10 minut za darmo — nie trzeba
+- GitHub Actions (`.github/workflows/check-stock.yml`) uruchamia skrypt co 5 minut za darmo — nie trzeba
   nic hostować (workflow doinstalowuje Chromium przy każdym uruchomieniu).
 
 ## Konfiguracja (jednorazowo)
@@ -27,12 +27,12 @@ i wysyła powiadomienie Telegram (+opcjonalnie e-mail), gdy pojawi się przycisk
      — dla Gmaila: `SMTP_HOST=smtp.gmail.com`, hasło to **App Password** (nie zwykłe hasło konta).
 3. Zakładka **Actions** → włącz workflow, jeśli GitHub o to poprosi.
 
-Workflow uruchomi się automatycznie co 10 minut. Możesz też odpalić go ręcznie przez
+Workflow uruchomi się automatycznie co 5 minut. Możesz też odpalić go ręcznie przez
 **Actions → Check iPhone 16e stock → Run workflow**.
 
 ## Uwagi
-- GitHub Actions dla repo publicznego = darmowe bez limitu; dla prywatnego = 2000 min/mies. w darmowym
-  planie (ten job trwa kilka sekund, więc starczy z zapasem).
+- To repo jest publiczne → GitHub Actions jest darmowe bez limitu minut niezależnie od częstotliwości
+  (dla repo prywatnego byłby limit 2000 min/mies. w darmowym planie).
 - GitHub automatycznie wyłącza harmonogram (`schedule`) po ~60 dniach bez aktywności w repo — wtedy
   wystarczy zrobić dowolny commit albo ręcznie uruchomić workflow, żeby go "obudzić".
 - Amazon czasem pokazuje CAPTCHA przy zbyt częstych zapytaniach z jednego IP — skrypt to wykrywa
