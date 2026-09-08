@@ -1,6 +1,8 @@
 name: Check iPhone 16e stock
 
 on:
+  schedule:
+    - cron: '*/5 * * * *'
   workflow_dispatch: {}
 
 jobs:
